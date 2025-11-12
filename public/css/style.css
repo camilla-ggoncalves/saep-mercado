@@ -1,0 +1,392 @@
+        /* ========================================
+           RESET - Remove espaçamentos padrão do navegador
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Faz padding e border não aumentarem o tamanho total */
+        }
+
+        /* ========================================
+           VARIÁVEIS CSS - Cores e tamanhos centralizados
+           Para mudar uma cor no site inteiro, mude aqui!
+           ======================================== */
+        :root {
+            /* Cores principais do sistema */
+            --primary: #2563eb;              /* Azul principal - botões, links */
+            --primary-hover: #1d4ed8;        /* Azul mais escuro - hover */
+            --primary-light: #dbeafe;        /* Azul clarinho - fundos */
+            
+            --secondary: #7c3aed;            /* Roxo secundário */
+            --secondary-hover: #6d28d9;      /* Roxo escuro - hover */
+            
+            /* Cores de status */
+            --success: #10b981;              /* Verde - sucesso */
+            --warning: #f59e0b;              /* Laranja - aviso */
+            --danger: #ef4444;               /* Vermelho - erro/perigo */
+            --info: #06b6d4;                 /* Ciano - informação */
+            
+            /* Escala de cinzas - do mais claro ao mais escuro */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Cores de texto */
+            --text-primary: var(--gray-900);    /* Texto principal - mais escuro */
+            --text-secondary: var(--gray-600);  /* Texto secundário - médio */
+            --text-light: var(--gray-500);      /* Texto claro - mais suave */
+            
+            /* Cores de fundo */
+            --bg-primary: #ffffff;              /* Branco - fundo principal */
+            --bg-secondary: var(--gray-50);     /* Cinza clarinho */
+            --bg-tertiary: var(--gray-100);     /* Cinza um pouco mais escuro */
+            
+            /* Bordas */
+            --border-color: var(--gray-200);    /* Cor padrão das bordas */
+            --border-radius: 8px;               /* Arredondamento padrão */
+            --border-radius-sm: 6px;            /* Arredondamento pequeno */
+            --border-radius-lg: 12px;           /* Arredondamento grande */
+            
+            /* Sombras - criam profundidade */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            
+            /* Transições - animações suaves */
+            --transition: all 0.2s ease;
+            
+            /* Espaçamentos padronizados */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+        }
+
+        /* ========================================
+           CONFIGURAÇÃO GERAL DA PÁGINA
+           ======================================== */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;                    /* Espaçamento entre linhas */
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            padding: var(--spacing-xl);
+        }
+
+        /* Container principal - centraliza o conteúdo */
+        .container {
+            max-width: 1200px;                   /* Largura máxima */
+            margin: 0 auto;                      /* Centraliza horizontalmente */
+            background: var(--bg-primary);
+            padding: var(--spacing-2xl);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ========================================
+           TIPOGRAFIA - Títulos e textos
+           ======================================== */
+        h1 { 
+            font-size: 2.5rem;                   /* Tamanho grande para título principal */
+            font-weight: 700;                    /* Negrito forte */
+            margin-bottom: var(--spacing-lg); 
+            color: var(--text-primary); 
+        }
+        
+        h2 { 
+            font-size: 2rem; 
+            font-weight: 600; 
+            margin: var(--spacing-xl) 0 var(--spacing-md); 
+            color: var(--text-primary); 
+        }
+        
+        h3 { 
+            font-size: 1.5rem; 
+            font-weight: 600; 
+            margin: var(--spacing-lg) 0 var(--spacing-md); 
+            color: var(--text-primary); 
+        }
+        
+        h4 { 
+            font-size: 1.25rem; 
+            font-weight: 600; 
+            margin: var(--spacing-md) 0 var(--spacing-sm); 
+            color: var(--text-primary); 
+        }
+        
+        p { 
+            margin-bottom: var(--spacing-md); 
+            color: var(--text-secondary); 
+        }
+
+        /* ========================================
+           BOTÕES - Estilos base e variações
+           ======================================== */
+        .btn {
+            display: inline-flex;                /* Alinha ícones e texto */
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;                     /* Mãozinha ao passar mouse */
+            transition: var(--transition);       /* Animação suave */
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        /* Botão azul - ação principal */
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);         /* Levanta o botão */
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Botão roxo - ação secundária */
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: var(--secondary-hover);
+        }
+
+        /* Botões de status */
+        .btn-success { background: var(--success); color: white; }
+        .btn-danger { background: var(--danger); color: white; }
+        
+        /* Botão com borda - menos destaque */
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ========================================
+           FORMULÁRIOS - Inputs, selects, textareas
+           ======================================== */
+        .form-group {
+            margin-bottom: var(--spacing-lg);    /* Espaço entre campos */
+        }
+
+        /* Labels dos campos */
+        label {
+            display: block;                      /* Fica em cima do input */
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        /* Campos de entrada (input, textarea, select) */
+        input, textarea, select {
+            width: 100%;                         /* Ocupa toda largura disponível */
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: var(--transition);
+            background: var(--bg-primary);
+        }
+
+        /* Quando o campo está ativo (clicado) */
+        input:focus, textarea:focus, select:focus {
+            outline: none;                       /* Remove borda padrão do navegador */
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light); /* Brilho azul ao redor */
+        }
+
+        /* ========================================
+           CARDS - Caixas de conteúdo
+           ======================================== */
+        .card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        /* Efeito ao passar o mouse no card */
+        .card:hover {
+            box-shadow: var(--shadow-lg);        /* Sombra maior */
+            transform: translateY(-2px);         /* Levanta o card */
+        }
+
+        /* Título do card */
+        .card-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        /* ========================================
+           TABELAS - Para mostrar dados organizados
+           ======================================== */
+        .table-container {
+            overflow-x: auto;                    /* Scroll horizontal em telas pequenas */
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;           /* Remove espaços entre células */
+            background: var(--bg-primary);
+        }
+
+        /* Cabeçalho da tabela */
+        thead {
+            background: var(--gray-50);
+        }
+
+        /* Células do cabeçalho */
+        th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        /* Células normais */
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        /* Efeito ao passar mouse na linha */
+        tr:hover {
+            background: var(--gray-50);
+        }
+
+        /* ========================================
+           BADGES - Etiquetas de status
+           ======================================== */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;                 /* Bem arredondado */
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Variações de cores dos badges */
+        .badge-primary { background: var(--primary-light); color: var(--primary); }
+        .badge-success { background: #d1fae5; color: var(--success); }
+        .badge-warning { background: #fef3c7; color: #d97706; }
+        .badge-danger { background: #fee2e2; color: var(--danger); }
+
+        /* ========================================
+           ALERTAS - Mensagens de aviso/sucesso/erro
+           ======================================== */
+        .alert {
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-lg);
+            border-left: 4px solid;              /* Barra colorida na esquerda */
+        }
+
+        /* Variações de alertas */
+        .alert-info {
+            background: #e0f2fe;
+            border-color: var(--info);
+            color: #075985;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            border-color: var(--success);
+            color: #065f46;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            border-color: var(--warning);
+            color: #92400e;
+        }
+
+        .alert-danger {
+            background: #fee2e2;
+            border-color: var(--danger);
+            color: #991b1b;
+        }
+
+        /* ========================================
+           SISTEMA DE GRID - Layout em colunas
+           ======================================== */
+        .grid {
+            display: grid;                       /* Usa CSS Grid */
+            gap: var(--spacing-lg);              /* Espaço entre colunas */
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, 1fr); } /* 2 colunas iguais */
+        .grid-3 { grid-template-columns: repeat(3, 1fr); } /* 3 colunas iguais */
+        .grid-4 { grid-template-columns: repeat(4, 1fr); } /* 4 colunas iguais */
+
+        /* Em telas pequenas (mobile), vira 1 coluna */
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           CLASSES UTILITÁRIAS - Helpers rápidos
+           ======================================== */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        
+        /* Margens superiores */
+        .mt-1 { margin-top: var(--spacing-sm); }
+        .mt-2 { margin-top: var(--spacing-md); }
+        .mt-3 { margin-top: var(--spacing-lg); }
+        
+        /* Margens inferiores */
+        .mb-1 { margin-bottom: var(--spacing-sm); }
+        .mb-2 { margin-bottom: var(--spacing-md); }
+        .mb-3 { margin-bottom: var(--spacing-lg); }
+
+        /* ========================================
+           SEÇÕES DE DEMONSTRAÇÃO
+           ======================================== */
+        .demo-section {
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-2xl);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .demo-section:last-child {
+            border-bottom: none;                 /* Remove borda da última seção */
+        }
+
+        .button-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;                     /* Quebra linha se não couber */
+        }

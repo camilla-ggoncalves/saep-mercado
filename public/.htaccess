@@ -1,0 +1,13 @@
+# Arquivo .htaccess em public/
+# Habilita URLs limpas e redireciona para o Front Controller
+
+RewriteEngine On
+
+# Redireciona raiz para a tela de login
+RewriteRule ^$ index.php?action=login [L]
+
+# Remove index.php da URL
+# Se o arquivo ou diretorio nao existir, redireciona para index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?action=$1 [L,QSA]
