@@ -14,7 +14,7 @@ class EstoqueController {
 
         $produtos = $this->produtoModel->buscarTodos();
 
-        $produtos = $this->produtooModel->ordenarPorNome($produtos);
+        $produtos = $this->produtoModel->ordenarPorNome($produtos);
 
         // Busca as ultimas 20 movimentacoes (entrada/saida)
         $historico = $this->movimentacaoModel->historico(20);

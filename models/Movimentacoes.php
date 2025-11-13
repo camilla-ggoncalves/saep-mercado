@@ -43,7 +43,7 @@ class Movimentacao {
                 // SAIDA: diminui o estoque
 
                 // Valida se ha estoque suficiente para saida
-                if ($dados['quantidade'] > $livro['estoque_atual']) {
+                if ($dados['quantidade'] > $produto['estoque_atual']) {
                     throw new Exception('Quantidade de saida maior que estoque disponivel');
                 }
 
